@@ -1,0 +1,40 @@
+settings:
+  files:
+    outputs:
+      status: true
+      name: outputs.log
+    logs:
+      status: true
+      name: logs.log
+    errors:
+      status: true
+      name: errors.log
+  legacy:
+    force: false
+    interval: 100ms
+server:
+  status: false
+  open: false
+  host: localhost
+  port: 5001
+schema:
+- name: go-realize-test
+  path: %PROJECT_ROOT%
+  commands:
+    build:
+      status: true
+      method: go build -o bin/go-realize-test ./cmd/go-realize-test
+    run: true
+  watcher:
+    paths:
+    - /
+    extensions:
+    - go
+    ignored_paths:
+    - .git
+    - .realize
+    - db
+    - bin
+    - etc
+    - support
+    - vendor
